@@ -45,6 +45,7 @@ class Pages{
             //this->probablilidades_condicionais = Google(*this);
         };
         void inserir(int id, int numeros_filhos, float probabilidade, int *pais = nullptr, int numero_pais = 0);
+        void padronizar();
         void imprimir();
         
         void Google(float D);

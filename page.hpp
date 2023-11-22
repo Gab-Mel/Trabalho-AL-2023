@@ -61,7 +61,8 @@ void Pages::imprimir() {
         cout << this->paginas[i].id << " ";
         cout << this->paginas[i].numero_filhos << " ";
         cout << this->paginas[i].probabilidade << " ";
-        cout << this->paginas[i].pais[0] << endl;
+        cout << endl;
+        //cout << this->paginas[i].pais[0] << endl;
     };
 };
 
@@ -81,17 +82,29 @@ void Pages::Google(float D) {
     //this->Grafo[numero_paginas][numero_paginas];
 }
 
+void Pages::padronizar() {
+    float probabilidade = 1.0/this->numero_paginas;
+    for (int i=0; i<this->numero_paginas; i++){
+        this->paginas[i].probabilidade = probabilidade;
+    }
+}
+
+
 void Pages::ajust(float delta, float D) {
     float aux = 0.0;
     float *temporario = new float[this->numero_paginas];
     float dif = 10;
     int contador = 0;
 
+    
+    
+    padronizar();
     Google(D);
+    
 
     while (dif > delta){
         contador++;
-        cout << contador << endl;
+        //cout << contador << endl;
         //cout << "oi" << endl;
 
         temporario = new float[this->numero_paginas];
@@ -114,7 +127,7 @@ void Pages::ajust(float delta, float D) {
         }
         dif = sqrt(aux);
 
-        cout << dif << " " << aux << endl;
+        //cout << dif << " " << aux << endl;
         //dif--;
 
         for (int i=0; i<this->numero_paginas; i++){
