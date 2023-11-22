@@ -4,10 +4,11 @@
 #include <iostream>
 #include <vector>
 #include <string.h>
+#include <math.h>
 /*
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
+
 #include <time.h>
 #include <fstream>
 #include <sstream>
@@ -46,51 +47,15 @@ class Pages{
         void inserir(int id, int numeros_filhos, float probabilidade, int *pais = nullptr, int numero_pais = 0);
         void imprimir();
         
-        void Google();
+        void Google(float D);
 
-        bool sersh (Page pagina, int x);
+        bool sersh(Page pagina, int x);
         //void inserir(int id, int id_pai, float probabilidade);
+
+        void ajust(float delta, float D);
         void gerate();
         
 };
-
-
-class Google {
-
-        
-    public:
-        int numero_paginas;
-        float **Grafo; // matrix de adjacencia
-        Google(Pages paginas) {
-            cout << "numero_paginas: " << paginas.numero_paginas << endl;
-            this->numero_paginas = paginas.numero_paginas;
-            this->Grafo = new float*[paginas.numero_paginas];
-            for (int i=0; i<paginas.numero_paginas; i++){
-                cout << "i: " << i << endl;
-                this->Grafo[i] = new float[paginas.numero_paginas];
-                cout << "i: " << i << endl;
-                for (int j=0; j<paginas.numero_paginas; j++){
-                    if (sersh(paginas.paginas[i], paginas.paginas[j].id)){
-                        cout << paginas.paginas[i].pais << " ";
-                        this->Grafo[i][j] = 1.0/paginas.paginas[j].numero_filhos;
-                        cout << "|" << i << j <<paginas.paginas[j].numero_filhos << "|" << endl;
-                        cout << 1.0/2 << endl;
-                    }
-                    else{
-                        this->Grafo[i][j] = 0;
-                    }
-                }
-            }
-            //this->Grafo[numero_paginas][numero_paginas];
-        }
-
-        bool sersh (Page pagina, int x);
-        //void inserir(int id, int id_pai, float probabilidade);
-        void gerate();
-
-        
-};
-
 
 
 #include "page.hpp"
