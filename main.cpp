@@ -28,12 +28,13 @@ int main( int argc, char** argv ) {
         int *pais;
         float probabilidade = 0;
         int aux = 0;
+        int l = 0;
 
 
         FILE *pf;
-        char conteudo[1000];
+        char conteudo[8000000];
         pf = fopen(argv[1], "rb"); //lendo arquivo
-        fread(&conteudo, sizeof(char), 100,pf);
+        fread(&conteudo, sizeof(char), 8000000,pf);
         fclose(pf);
         string s;
         string s2;
@@ -54,21 +55,24 @@ int main( int argc, char** argv ) {
                 if (k == 0){
                   id = atoi(s2.c_str());
                 } else if (k == 2){
-                  n_filhos = atol(s2.c_str());
-                  
+                  n_filhos = atoi(s2.c_str());
                 } else if (k == 4){
-                  n_pais = atol(s2.c_str());
-                  
+                  n_pais = atoi(s2.c_str());
                 }
                   else if (k == 6){
                   pais = new int[n_pais];
                   aux = 0;
-                  for (int l=0; l < n_pais*2 - 1; l++){
-                    if (s2[l] != '-'){
-                      s3 = s2[l];
-                      pais[aux] = atol(s3.c_str());
+                  l = 0;
+                  while (s2[l] != '\0'){
+                    if (s2[l] != '-' && s2[l] != '.'){
+                      s3 += s2[l];
+                      
+                    } else {
+                      pais[aux] = atoi(s3.c_str());
                       aux++;
+                      s3.clear();
                     }
+                    l++;
                   }
                   }
                 k++;
@@ -76,9 +80,8 @@ int main( int argc, char** argv ) {
               }
               j++;
               
-            }
+            } 
             pag.inserir(id, n_filhos, pais, n_pais); //inserindo pagina
-            
           s.clear();
           }
           i++;
