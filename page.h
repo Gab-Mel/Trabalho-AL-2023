@@ -7,22 +7,6 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-//#include <string.h>
-//#include <conio.h>
-/*
-
-#include <stdlib.h>
-
-#include <time.h>
-#include <fstream>
-#include <sstream>
-#include <iomanip>
-#include <algorithm>
-#include <iterator>
-#include <map>
-#include <set>
-*/
-
 #include <list>
 using namespace std;
 
@@ -36,29 +20,25 @@ struct Page {
 };
 
 class Pages{
-        
+    private:
+        float **Grafo; //matriz M
+
+        void padronizar(); //padonizar probabilidades
+        bool sersh(Page pagina, int x);
+        void gerar_matrix(float D); //gerar matriz M
     public:
-        Page *paginas;
-        int numero_paginas;
-        float **Grafo;
+        Page *paginas; //lista de paginas
+        int numero_paginas; 
         
-        //Google probablilidades_condicionais;
-        Pages(int n){
+        Pages(int n){ //construtor
             numero_paginas = n;
             paginas = new Page[n];
-            //this->probablilidades_condicionais = Google(*this);
         };
-        void inserir(int id, int numeros_filhos, float probabilidade, int *pais = nullptr, int numero_pais = 0);
-        void padronizar();
-        void imprimir();
-        
-        void Google(float D);
 
-        bool sersh(Page pagina, int x);
-        //void inserir(int id, int id_pai, float probabilidade);
-
-        void ajust(float delta, float D);
-        void gerate();
+        void inserir(int id, int numeros_filhos, int *pais = nullptr, int numero_pais = 0, float probabilidade = 0.0); //inserir pagina
+        void imprimir_pagerank(); //imprimir PagRank
+        void ajust(float delta, float D); //ajustar probabilidades
+        void imprimir_matriz(); //printar matriz M
         
 };
 
