@@ -57,9 +57,9 @@ void Pages::inserir(int id, int numero_filhos, float probabilidade, int *pais, i
 };
 
 void Pages::imprimir() {
+    cout << "paginas: " << "PageRank" << endl;
     for (int i = 0; i < this->numero_paginas; i++) {
-        cout << this->paginas[i].id << " ";
-        cout << this->paginas[i].numero_filhos << " ";
+        cout << this->paginas[i].id << ": ";
         cout << this->paginas[i].probabilidade << " ";
         cout << endl;
         //cout << this->paginas[i].pais[0] << endl;
