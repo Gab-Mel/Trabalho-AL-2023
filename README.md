@@ -25,3 +25,6 @@ Eles devem seguir a seguinte estrutura:
 - Os pais devem ser seguidos por hífem e sem nenhuma outra separação, ex.: `1-2-3-4-`;
 - Os hífens podem ser substituidos por pontos sem perdas;
 - O arquivo é limitado a `8,000,000` caracteres.
+
+#### Sobre os arquivos pré disponiveis
+O arquivo database002.txt possui o vetor R tendendo a zero propositalmente, pois **1** é sorvedouro o que implica que a coluna j=1 é nula.
